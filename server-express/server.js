@@ -10,6 +10,9 @@ http.createServer((request, response) => {
     let body = [];
     request
         .on("error", (err) => {
+            console.log(request.headers);
+            console.log(response.statusCode)
+
             response.end("error while reading body: " + err);
         })
         .on("data", (chunk) => {

@@ -3,7 +3,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +36,10 @@ class server {
         public void handle(HttpExchange exchange) throws IOException {
             FileWriter output = new FileWriter("output.txt",true);
             
+            String methodName = exchange.getRequestMethod();
+            String protocol = exchange.getProtocol() ;
+            URI uri = exchange.getRequestURI() ;
+
             //Request Headers
             Headers exchangeHeaders = exchange.getRequestHeaders();
             Map<String, List<String>> headers = new HashMap<>();
@@ -54,7 +60,8 @@ class server {
             
             String response_content = "Body length : "+ body.toString().length()  +"\nBody : "+body.toString();
             String log_content =
-          "\n<-------\nRequest-headers :\n"+headers+"\n\n" +
+               methodName + " " + uri + " " + protocol +
+              "\n<-------\nRequest-headers :\n"+headers+"\n\n" +
               response_content +
               "\n------->\n";
             
