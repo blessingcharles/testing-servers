@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.util.HashMap;
@@ -16,7 +15,7 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 class server {
-    public static int port = 4001;
+    public static int port = 8001;
     public static String outputFileName = "output.txt";
     public static FileWriter output;
     public static void main(String[] args) {

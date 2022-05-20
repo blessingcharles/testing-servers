@@ -3,8 +3,9 @@ const http = require("http");
 const fs = require("fs")
 
 // https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/
+const port = 8002
 
-console.log("server started at 8080");
+console.log("server started at " + port);
 http.createServer((request, response) => {
 
     let body = [];
@@ -37,4 +38,4 @@ http.createServer((request, response) => {
                 "Body length: " + body.length.toString() + " Body: " + body
             );
         });
-}).listen(8080);
+}).listen(port);
